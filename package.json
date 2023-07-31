@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.8.0",
   "description": "A wrapper around json-schema-to-zod for using stdin / stdout",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "author": "Fabian <spiele2014fs@gmail.com>",
   "license": "MIT",
   "private": false,
