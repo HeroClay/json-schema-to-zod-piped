@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { resolveRefs } from "json-refs";
 import { jsonSchemaToZod, parseSchema } from "json-schema-to-zod";
 import { z } from "zod";
@@ -19,7 +20,7 @@ let { output, multiline, name, module, deref, 'resolve-circulars': resolveCircul
 				type: z.boolean().default(false),
 				alias: "ml",
 				description:
-					"enable multiline: continues parsing, where each input/output schema is seperated with \\n\\n, only works with --output schema",
+					"enable multiline: continues parsing, seperated with \\n\\n",
 			},
 			name: {
 				type: z
@@ -50,7 +51,7 @@ let { output, multiline, name, module, deref, 'resolve-circulars': resolveCircul
 				type: z.boolean().default(true),
 				alias: "d",
 				description:
-					"use default values in the schema, only works with --output module",
+					"use default values in the schema",
 			},
             'exit-on-error': {
                 type: z.boolean().default(true),
@@ -65,12 +66,9 @@ const println = (val: string = "") => process.stdout.write(val + "\n");
 
 if (multiline && output !== "schema") {
 	eprintln(
-		"WARN: multiline flag not working with --output module, ignoring it"
+		"WARN: multiline flag not working with --output module, switching to --output schema"
 	);
-	multiline = false;
-}
-if (name && output !== "module") {
-	eprintln("WARN: name flag ignored when using --output schema");
+	output = "schema";
 }
 
 async function read(stream: NodeJS.ReadStream) {

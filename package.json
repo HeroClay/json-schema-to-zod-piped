@@ -1,12 +1,13 @@
 {
   "name": "json-schema-to-zod-piped",
   "type": "module",
-  "version": "0.8.1",
+  "version": "0.8.5",
   "description": "A wrapper around json-schema-to-zod for using stdin / stdout",
   "main": "src/main.js",
   "author": "Fabian <spiele2014fs@gmail.com>",
   "license": "MIT",
   "private": false,
+  "keywords": ["zod", "json-schema"],
   "scripts": {
     "show-help": "tsc && node src/main.js --help",
     "build": "tsc",
