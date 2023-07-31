@@ -8,10 +8,14 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "show-help": "tsc && node src/main.js --help",
-    "build": "tsc",
+    "show-help": "tsc && minify src/main.js > src/main.min.js && cp src/main.min.js src/main.js && node src/main.js --help",
+    "build": "tsc && minify src/main.js > src/main.min.js && cp src/main.min.js src/main.js",
     "intro": "node help.js"
   },
+  "files": [
+    "src/main.js",
+    "src/main.d.ts"
+  ],
   "bin": "src/main.js",
   "dependencies": {
     "ajv": "^8.12.0",
@@ -23,6 +27,7 @@
   },
   "devDependencies": {
     "@types/buffer-split": "^1.0.0",
+    "minify": "^10.3.0",
     "typescript": "^5.1.6"
   }
 }

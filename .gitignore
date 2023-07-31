@@ -1,2 +1,5 @@
 node_modules
 yarn.lock
+main.min.js
+main.js
+main.d.ts

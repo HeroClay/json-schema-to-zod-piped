@@ -163,3 +163,5 @@ if (multiline) {
         println(await parse({}));
     }
 }
+
+export default 'this is a cli package, please use json-schema-to-zod as the libary' as const;
