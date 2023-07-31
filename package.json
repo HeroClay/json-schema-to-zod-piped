@@ -1,20 +1,21 @@
 {
   "name": "json-schema-to-zod-piped",
   "type": "module",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A wrapper around json-schema-to-zod for using stdin / stdout",
   "main": "src/main.js",
   "author": "Fabian <spiele2014fs@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "show-help": "tsc && minify src/main.js > src/main.min.js && cp src/main.min.js src/main.js && node src/main.js --help",
-    "build": "tsc && minify src/main.js > src/main.min.js && cp src/main.min.js src/main.js",
+    "show-help": "tsc && node src/main.js --help",
+    "build": "tsc",
     "intro": "node help.js"
   },
   "files": [
     "src/main.js",
-    "src/main.d.ts"
+    "src/main.d.ts",
+    "README.md"
   ],
   "bin": "src/main.js",
   "dependencies": {
@@ -27,7 +28,6 @@
   },
   "devDependencies": {
     "@types/buffer-split": "^1.0.0",
-    "minify": "^10.3.0",
     "typescript": "^5.1.6"
   }
 }
