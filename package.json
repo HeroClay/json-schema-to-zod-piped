@@ -1,9 +1,8 @@
 {
   "name": "json-schema-to-zod-piped",
   "type": "module",
-  "version": "0.8.5",
+  "version": "0.9.2",
   "description": "A wrapper around json-schema-to-zod for using stdin / stdout",
-  "main": "src/main.js",
   "author": "Fabian <spiele2014fs@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -15,7 +14,6 @@
   },
   "files": [
     "src/main.js",
-    "src/main.d.ts",
     "README.md"
   ],
   "bin": "./src/main.js",

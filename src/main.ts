@@ -125,6 +125,10 @@ async function parse(data: any) {
 
 if (multiline) {
 	for await (const jsonRaw of readEach(process.stdin)) {
+        if (jsonRaw.trim() === ';;exit') {
+            break;
+        }
+
         try {
             const json = JSON.parse(jsonRaw);
             println((await parse(json)).trimEnd());

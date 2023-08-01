@@ -27,6 +27,6 @@ press enter + type EOF + enter again to end input
 
 ### multiline
 
-2x enter to end input, CTRL-C to exit
+2x enter to end input, write `;;exit` as input to exit
 
 `cat | npx json-schema-to-zod-piped@latest --multiline`
