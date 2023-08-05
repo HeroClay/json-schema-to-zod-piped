@@ -1,7 +1,7 @@
+# json-schema-to-zod-piped
+
 [![NPM Version](https://img.shields.io/npm/v/json-schema-to-zod-piped.svg)](https://npmjs.org/package/json-schema-to-zod)
 [![Build Status](https://github.com/HeroClay/json-schema-to-zod-piped/actions/workflows/compile.yml/badge.svg)](https://github.com/HeroClay/json-schema-to-zod-piped/)
-
-# json-schema-to-zod-piped
 
 A wrapper around [json-schema-to-zod](https://www.npmjs.com/package/json-schema-to-zod) for using stdin / stdout
 
