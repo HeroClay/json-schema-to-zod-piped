@@ -39,3 +39,9 @@ press enter + type EOF + enter again to end input
 To switch to input / output mode, prefix json with `;;true;;` or `;;false;;`
 
 `cat | npx json-schema-to-zod-piped@latest --multiline`
+ 
+## --input flag
+
+| input             | no input   |
+|-------------------|------------|
+| `z.coerce.date()` | `z.date()` |
