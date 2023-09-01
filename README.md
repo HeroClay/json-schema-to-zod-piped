@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/json-schema-to-zod-piped.svg)](https://npmjs.org/package/json-schema-to-zod)
 [![Build Status](https://github.com/HeroClay/json-schema-to-zod-piped/actions/workflows/compile.yml/badge.svg)](https://github.com/HeroClay/json-schema-to-zod-piped/)
 
-A wrapper around [json-schema-to-zod](https://www.npmjs.com/package/json-schema-to-zod) for using stdin / stdout
+Use stdin / stdout logic with [json-schema-to-zod](https://www.npmjs.com/package/json-schema-to-zod) for json
 
 help: `npx json-schema-to-zod-piped@latest --help`
 
@@ -14,6 +14,7 @@ Options:
   -ml, --multiline          enable multiline: continues parsing, seperated with \n\n (default: false)
   -n,  --name <string>      the name of the export (default: "default")
   -m,  --module <string>    whether to use cjs or esm (choices: "cjs", "esm") (default: "esm")
+  -i,  --input              If the schema should be in or output of json (default: false)                                          
   -d,  --deref              Use json-schema-ref-parser to dereference the schema (default: false)
   -rc, --resolve-circulars  Whether to resolve circular references while dereferencing (default: true)
   -d,  --defaults           use default values in the schema (default: true)
@@ -35,5 +36,6 @@ press enter + type EOF + enter again to end input
 ### multiline
 
 2x enter to end input, write `;;exit` as input to exit
+To switch to input / output mode, prefix json with `;;true;;` or `;;false;;`
 
 `cat | npx json-schema-to-zod-piped@latest --multiline`

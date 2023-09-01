@@ -1,0 +1,4 @@
+**/*.js
+**/*.d.ts
+.prettierrc.json
+openapi/SwaggerDark
