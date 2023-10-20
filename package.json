@@ -1,7 +1,7 @@
 {
   "name": "json-schema-to-zod-piped",
   "type": "module",
-  "version": "0.9.4",
+  "version": "0.9.7",
   "description": "A wrapper around json-schema-to-zod for using stdin / stdout",
   "author": "Fabian <spiele2014fs@gmail.com>",
   "license": "MIT",
@@ -35,6 +35,7 @@
     "ajv": "^8.12.0",
     "buffer-split": "^1.0.0",
     "json-refs": "^3.0.15",
+    "json-schema-to-zod": "https://github.com/HeroClay/json-schema-to-zod",
     "prettier": "^2.4.1",
     "zod": "^3.21.4",
     "zod-opts": "^0.1.6"
