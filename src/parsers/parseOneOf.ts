@@ -7,42 +7,73 @@ export const parseOneOf = (
     refs: Refs,
     is_input: boolean
 ) => {
-    return schema.oneOf.length
-        ? schema.oneOf.length === 1
-            ? parseSchema(
-                  schema.oneOf[0],
-                  {
-                      ...refs,
-                      path: [...refs.path, 'oneOf', 0],
-                  },
-                  is_input
-              )
-            : `z.any().superRefine((x, ctx) => {
-    const schemas = [${schema.oneOf.map((schema, i) =>
-        parseSchema(
-            schema,
+    if (!schema.oneOf.length) {
+        return 'z.any()';
+    }
+    if (schema.oneOf.length === 1) {
+        return parseSchema(
+            schema.oneOf[0],
             {
                 ...refs,
-                path: [...refs.path, 'oneOf', i],
+                path: [...refs.path, 'oneOf', 0],
             },
             is_input
-        )
-    )}];
-    const errors = schemas.reduce(
-      (errors: z.ZodError[], schema) =>
-        ((result) => ("error" in result ? [...errors, result.error] : errors))(
-          schema.safeParse(x)
-        ),
-      []
-    );
-    if (schemas.length - errors.length !== 1) {
-      ctx.addIssue({
-        path: ctx.path,
-        code: "invalid_union",
-        unionErrors: errors,
-        message: "Invalid input: Should pass single schema",
-      });
+        );
     }
-  })`
-        : 'z.any()';
+
+    let keys: string[] = [];
+    for (const s of schema.oneOf) {
+        if (
+            !(
+                s instanceof Object &&
+                s.type === 'object' &&
+                s.properties !== undefined
+            )
+        ) {
+            keys = [];
+            break;
+        }
+
+        if (!keys.length) {
+            keys = Object.keys(s.properties);
+        } else {
+            for (const key of keys) {
+                if (!(key in s.properties)) {
+                    const index = keys.indexOf(key);
+                    keys.splice(index, 1);
+                } else {
+                    const schema = s.properties[key];
+                    if (
+                        !(
+                            schema instanceof Object &&
+                            schema.type === 'string' &&
+                            Array.isArray(schema.enum) &&
+                            schema.enum.length === 1
+                        )
+                    ) {
+                        const index = keys.indexOf(key);
+                        keys.splice(index, 1);
+                    }
+                }
+            }
+        }
+    }
+    const isDiscriminated = keys.length === 1;
+
+    return `z.${
+        isDiscriminated
+            ? `discriminatedUnion(${JSON.stringify(keys[0])}, `
+            : 'union('
+    }[${schema.oneOf
+        .map((schema, i) =>
+            parseSchema(
+                schema,
+                {
+                    ...refs,
+                    path: [...refs.path, 'oneOf', i],
+                },
+                is_input
+            )
+        )
+        .join()}])`;
 };
