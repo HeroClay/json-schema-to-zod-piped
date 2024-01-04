@@ -1,5 +1,7 @@
 # json-schema-to-zod-piped
 
+## This project is archived due to [schemars-zod](https://github.com/s-fabian/schemars-zod)
+
 [![NPM Version](https://img.shields.io/npm/v/json-schema-to-zod-piped.svg)](https://npmjs.org/package/json-schema-to-zod)
 [![Build Status](https://github.com/HeroClay/json-schema-to-zod-piped/actions/workflows/compile.yml/badge.svg)](https://github.com/HeroClay/json-schema-to-zod-piped/)
 
